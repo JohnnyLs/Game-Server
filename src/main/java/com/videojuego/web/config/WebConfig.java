@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         System.out.println("Configurando CORS en WebConfig...");
         registry.addMapping("/api/**")
-                .allowedOrigins("http://localhost:4200", "https://game-client-web.vercel.app")
+                .allowedOrigins("http://localhost:4200", "https://mathquiz-kappa.vercel.app")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("Content-Type", "Authorization")
                 .allowCredentials(true)
