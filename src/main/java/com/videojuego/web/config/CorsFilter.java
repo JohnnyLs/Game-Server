@@ -15,7 +15,7 @@ public class CorsFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         System.out.println("Aplicando filtro CORS para solicitud: " + request.getRequestURI());
-        response.setHeader("Access-Control-Allow-Origin", "https://game-client-web.vercel.app");
+        response.setHeader("Access-Control-Allow-Origin", "https://mathquiz-kappa.vercel.app");
         response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
         response.setHeader("Access-Control-Allow-Credentials", "true");
