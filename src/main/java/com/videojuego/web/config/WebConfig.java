@@ -1,24 +1,20 @@
 package com.videojuego.web.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("*") // Permitir solicitudes de cualquier origen
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedHeaders("*") // Permitir todos los encabezados
-                        .allowCredentials(false); // No permite el uso de cookies en la solicitud
-            }
-        };
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        System.out.println("Configurando CORS en WebConfig...");
+        registry.addMapping("/api/**")
+                .allowedOrigins("http://localhost:4200", "https://game-client-web.vercel.app")
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("Content-Type", "Authorization")
+                .allowCredentials(true)
+                .maxAge(3600);
     }
 }
